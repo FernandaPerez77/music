@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carta de Amor</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            background: linear-gradient(
+                -40deg,
+                rgb(238, 108, 151),
+                rgb(219, 66, 168),
+                rgb(219, 95, 111)
+            );
+            background-size: 400% 400%;
+            animation: colorChange 6s ease infinite;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        @keyframes colorChange {
+            0% { background-color: rgb(240, 110, 110); }
+            50% { background-color: rgb(209, 60, 60); }
+            100% { background-color: rgb(219, 95, 111); }
+        }
+
+        /* Carta */
+        #carta {
+            width: 300px;
+            height: 200px;
+            background-color: #fff;
+            border: 2px solid #ffffff;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        #carta button {
+            padding: 10px 20px;
+            background-color: #160e10;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #carta button:hover { background-color: #a00c0c; }
+
+        /* Corazon */
+        #corazon {
+            display: none;
+            position: relative;
+            text-align: center;
+        }
+
+        .heart {
+            width: 100px;
+            height: 100px;
+            background-color: #f30000;
+            position: relative;
+            margin: 0 auto 10px;
+            transform: rotate(-45deg);
+            animation: latido 1s infinite;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: "";
+            width: 100px;
+            height: 100px;
+            background-color: #f30000;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .heart::before { top: -50px; left: 0; }
+        .heart::after { left: 50px; top: 0; }
+
+        @keyframes latido {
+            0%, 100% { transform: scale(1) rotate(-45deg); }
+            50% { transform: scale(1.2) rotate(-45deg); }
+        }
+
+        #mensaje {
+            font-size: 20px;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        /* Contenedor de canciones */
+        .songs-list {
+            display: none; /* Oculto inicialmente */
+            width: 100%;
+            max-width: 800px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .song {
+            width: 300px;
+            margin: 10px auto;
+            background-color: #5c5b5b;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .song:hover { transform: scale(1.05); }
+        .song img { width: 100%; height: auto; border-radius: 10px; }
+
+        .song button {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            padding: 10px 15px;
+            background-color: #dd9b9b; /* Color verde de Spotify */
+            color: rgb(0, 0, 0);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .song button:hover {
+            background-color: #831414;
+        }
+
+        audio { margin-top: 15px; width: 100%; }
+    </style>
+</head>
+<body>
+    <!-- Carta Inicial -->
+    <div id="carta">
+        <p>Holi, hice esta cartita para ti mi amor ❤️</p>
+        <button onclick="abrirCarta()">ABRIR</button>
+    </div>
+
+    <!-- Corazon Animado -->
+    <div id="corazon">
+        <div class="heart"></div>
+        <p id="mensaje">Te amo mucho, mi niño hermoso ❤️</p>
+    </div>
+
+    <!-- Lista de Canciones -->
+    <div class="songs-list" id="songsList">
+        <div class="song">
+            <img src="https://images.pexels.com/photos/29813744/pexels-photo-29813744.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Imagen de canción">
+            <div class="song-info">
+                <h3>Astronauta de tus Lunares</h3>
+                <p>Adan Cruz</p>
+                <!-- Botón Play -->
+                <button onclick="window.open('https://open.spotify.com/intl-es/track/03K83Z46K5t8VlhLrh9l6v?si=99b3d40dacd84c92', '_blank')">
+                    Play
+                </button>
+            </div>
+            
+        </div>
+        
+    </div>
+    
+
+    <script>
+        function abrirCarta() {
+            // Ocultar la carta y mostrar el corazón
+            document.getElementById('carta').style.display = 'none';
+            document.getElementById('corazon').style.display = 'block';
+            
+            // Mostrar el contenedor de canciones
+            document.getElementById('songsList').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
